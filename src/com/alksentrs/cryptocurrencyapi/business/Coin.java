@@ -16,21 +16,21 @@ public class Coin implements Parcelable {
     private String asset;
     private String pair;
     private String currencyPair;
-    private float price;
-    private float averagePriceBought;
-    private float amount;
+    private double price;
+    private double averagePriceBought;
+    private double amount;
     private boolean favorite;
     private long lastTradeTime;
     private long time;
 
-    public Coin(String asset, String pair, float price, long time) {
+    public Coin(String asset, String pair, double price, long time) {
         this.asset = asset;
         this.pair = pair;
         this.price = price;
         this.time = time;
     }
 
-    public Coin(String asset, String pair, float price, boolean favorite, long time) {
+    public Coin(String asset, String pair, double price, boolean favorite, long time) {
         this.asset = asset;
         this.pair = pair;
         this.price = price;
@@ -38,7 +38,7 @@ public class Coin implements Parcelable {
         this.time = time;
     }
 
-    public Coin(String asset, String pair, float price, float averagePriceBought, float amount, long lastTradeTime, boolean favorite, long time) {
+    public Coin(String asset, String pair, double price, double averagePriceBought, double amount, long lastTradeTime, boolean favorite, long time) {
         this.asset = asset;
         this.pair = pair;
         this.price = price;
@@ -69,6 +69,8 @@ public class Coin implements Parcelable {
         this.time = 0;
     }
 
+
+
     public String getAsset() {
         return asset;
     }
@@ -85,12 +87,8 @@ public class Coin implements Parcelable {
         this.currencyPair = currencyPair;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
-    }
-
-    public String toString() {
-        return asset+" "+pair+" "+price+" "+time;
     }
 
     public long getTime() {
@@ -101,7 +99,7 @@ public class Coin implements Parcelable {
         return favorite;
     }
 
-    public float getAveragePriceBought() {
+    public double getAveragePriceBought() {
         return averagePriceBought;
     }
 
@@ -109,7 +107,7 @@ public class Coin implements Parcelable {
         this.averagePriceBought = averagePriceBought;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
@@ -158,9 +156,9 @@ public class Coin implements Parcelable {
             = new Comparator<Coin>() {
 
         public int compare(Coin coin1, Coin coin2) {
-            float price1 = coin1.getPrice();
-            float price2 = coin2.getPrice();
-            float delta = price1-price2;
+            double price1 = coin1.getPrice();
+            double price2 = coin2.getPrice();
+            float delta = (float)(price1-price2);
             if (0!=delta) while (Math.abs(delta) < 100) delta=delta*10;
             //ascending order
             return Math.round(delta);
@@ -170,9 +168,9 @@ public class Coin implements Parcelable {
             = new Comparator<Coin>() {
 
         public int compare(Coin coin1, Coin coin2) {
-            float price1 = coin1.getPrice();
-            float price2 = coin2.getPrice();
-            float delta = price2-price1;
+            double price1 = coin1.getPrice();
+            double price2 = coin2.getPrice();
+            float delta = (float)(price2-price1);
             if (0!=delta) while (Math.abs(delta) < 100) delta=delta*10;
             //ascending order
             return Math.round(delta);
@@ -182,11 +180,11 @@ public class Coin implements Parcelable {
             = new Comparator<Coin>() {
 
         public int compare(Coin coin1, Coin coin2) {
-            float price1 = coin1.getPrice();
-            float price2 = coin2.getPrice();
-            float priceBought1 = coin1.getAveragePriceBought();
-            float priceBought2 = coin2.getAveragePriceBought();
-            float delta = (price1-priceBought1)-(price2-priceBought2);
+            double price1 = coin1.getPrice();
+            double price2 = coin2.getPrice();
+            double priceBought1 = coin1.getAveragePriceBought();
+            double priceBought2 = coin2.getAveragePriceBought();
+            float delta = (float)((price1-priceBought1)-(price2-priceBought2));
             if (0!=delta) while (Math.abs(delta) < 100) delta=delta*10;
             //ascending order
             return Math.round(delta);
@@ -196,11 +194,11 @@ public class Coin implements Parcelable {
             = new Comparator<Coin>() {
 
         public int compare(Coin coin1, Coin coin2) {
-            float price1 = coin1.getPrice();
-            float price2 = coin2.getPrice();
-            float priceBought1 = coin1.getAveragePriceBought();
-            float priceBought2 = coin2.getAveragePriceBought();
-            float delta = (price2-priceBought2)-(price1-priceBought1);
+            double price1 = coin1.getPrice();
+            double price2 = coin2.getPrice();
+            double priceBought1 = coin1.getAveragePriceBought();
+            double priceBought2 = coin2.getAveragePriceBought();
+            float delta = (float)((price2-priceBought2)-(price1-priceBought1));
             if (0!=delta) while (Math.abs(delta) < 100) delta=delta*10;
             //ascending order
             return Math.round(delta);
@@ -236,9 +234,10 @@ public class Coin implements Parcelable {
         dest.writeString(asset);
         dest.writeString(pair);
         dest.writeString(currencyPair);
-        dest.writeFloat(price);
-        dest.writeFloat(averagePriceBought);
-        dest.writeFloat(amount);
+        dest.writeFloat((float)price);
+        dest.writeFloat((float)price);
+        dest.writeFloat((float)averagePriceBought);
+        dest.writeFloat((float)amount);
         dest.writeByte((byte) (favorite ? 1 : 0));
         dest.writeLong(lastTradeTime);
         dest.writeLong(time);
@@ -249,4 +248,8 @@ public class Coin implements Parcelable {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return "{\"asset\" : " + (asset == null ? null : "\"" + asset + "\"") + ",\"pair\" : " + (pair == null ? null : "\"" + pair + "\"") + ",\"price\" : " + price  + ",\"time\" : " + time + "}";
+    }
 }

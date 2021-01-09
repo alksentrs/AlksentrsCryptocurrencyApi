@@ -94,10 +94,8 @@ public class ApiConnection {
         return ret;
     }
 
-    protected Object getJSON(String https_url, Map<String,String> headers) throws ParseException {
-        String response = connect(https_url,headers);
-        if (null!=response) return jsonParser.parse(response);
-        return null;
+    protected String call(String https_url, Map<String,String> headers) throws ParseException {
+        return connect(https_url,headers);
     }
 
 }
