@@ -16,11 +16,7 @@ public class BitcoinTradeTicker {
     private double buy;
     private double sell;
 
-    private SimpleDateFormat sdf;
-
     public BitcoinTradeTicker() {
-        String pattern = "yyyy-MM-dd'T'HH:mm:ss";
-        sdf = new SimpleDateFormat(pattern);
     }
 
     public double getHigh() {
@@ -81,15 +77,6 @@ public class BitcoinTradeTicker {
 
     public String getDate() {
         return date;
-    }
-
-    public Date getDateDate() {
-        try {
-            return sdf.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public void setDate(String date) {

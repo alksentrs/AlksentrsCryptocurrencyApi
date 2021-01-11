@@ -40,7 +40,7 @@ public class Parcel {
         return "";
     }
 
-    public void writeFloat(Float f){
+    public void writeFloat(double f){
     }
 
     public float readFloat(){

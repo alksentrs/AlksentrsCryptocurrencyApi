@@ -13,6 +13,6 @@ public interface IExchangeConnection {
     ServerTime getServerTime();
     CoinList getPrices(String[] coins);
     BalanceList getBalanceList();
-    TradeList getTradeList(String asset);
+    TradeList getTradeList(String pair);
     DepositList getDepositWithdrawList(String asset);
 }

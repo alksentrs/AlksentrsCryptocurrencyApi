@@ -10,9 +10,9 @@ import com.alksentrs.cryptocurrencyapi.util.Creator;
 public class Trade implements Parcelable {
 
     private String id;
-    private float price;
-    private float qty;
-    private float commission;
+    private double price;
+    private double qty;
+    private double commission;
     private String commissionAsset;
     private long time;
     private boolean buyer;
@@ -22,7 +22,7 @@ public class Trade implements Parcelable {
     private boolean homemade;
     private String coinPair;
 
-    public Trade(String coinPair, String id, float price, float qty, float commission, String commissionAsset, long time, boolean buyer, boolean maker, boolean bestMatch, boolean bypass, boolean homemade) {
+    public Trade(String coinPair, String id, double price, double qty, double commission, String commissionAsset, long time, boolean buyer, boolean maker, boolean bestMatch, boolean bypass, boolean homemade) {
         this.coinPair = coinPair;
         this.id = id;
         this.price = price;
@@ -49,15 +49,15 @@ public class Trade implements Parcelable {
         return coinPair;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public float getQty() {
+    public double getQty() {
         return qty;
     }
 
-    public float getCommission() {
+    public double getCommission() {
         return commission;
     }
 

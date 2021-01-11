@@ -24,22 +24,11 @@ public class ApiConnection {
     public static final String ENCRYPTION_ALGORITHM_SHA512 = "HmacSHA512";
     public static final String ENCRYPTION_ALGORITHM_SHA256 = "HmacSHA256";
 
-    protected String apiKey;
-    protected String secret;
-
     protected HttpsClient httpsClient;
     protected JSONParser jsonParser = new JSONParser();
 
     public ApiConnection() {
         httpsClient = new HttpsClient();
-    }
-
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
-    }
-
-    public void setSecret(String secret) {
-        this.secret = secret;
     }
 
     protected String join(String [] array, String delimiter) {
@@ -84,18 +73,10 @@ public class ApiConnection {
         return toReturn;
     }
 
-    protected String connect(String url, Map<String,String> headers) {
-        String ret = null;
-        try {
-            ret = httpsClient.connect(url,headers);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    protected String call(String url, Map<String,String> headers) throws IOException {
+        String ret = httpsClient.connect(url,headers);
         return ret;
     }
 
-    protected String call(String https_url, Map<String,String> headers) throws ParseException {
-        return connect(https_url,headers);
-    }
 
 }

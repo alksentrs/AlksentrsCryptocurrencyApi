@@ -12,18 +12,18 @@ import java.util.Comparator;
 public class Balance implements Parcelable {
 
     private String asset;
-    private float free;
-    private float locked;
-    private float value;
+    private double free;
+    private double locked;
+    private double value;
 
-    public Balance(String asset, float free, float locked) {
+    public Balance(String asset, double free, double locked) {
         this.asset = asset;
         this.free = free;
         this.locked = locked;
         value = 0;
     }
 
-    public Balance(String asset, float free, float locked, float btcPrice) {
+    public Balance(String asset, double free, double locked, double btcPrice) {
         this.asset = asset;
         this.free = free;
         this.locked = locked;
@@ -38,15 +38,15 @@ public class Balance implements Parcelable {
         return asset;
     }
 
-    public float getFree() {
+    public double getFree() {
         return free;
     }
 
-    public float getLocked() {
+    public double getLocked() {
         return locked;
     }
 
-    public float getValue() {
+    public double getValue() {
         return value;
     }
 
@@ -69,45 +69,45 @@ public class Balance implements Parcelable {
 
     public static Comparator<Balance> BalanceBalanceAscComparator = new Comparator<Balance>() {
         public int compare(Balance balance1, Balance balance2) {
-            float fbalance1 = balance1.getFree()+balance1.getLocked();
-            float fbalance2 = balance2.getFree()+balance2.getLocked();
+            double fbalance1 = balance1.getFree()+balance1.getLocked();
+            double fbalance2 = balance2.getFree()+balance2.getLocked();
             //ascending order
-            float delta = fbalance1-fbalance2;
+            double delta = fbalance1-fbalance2;
             if (0!=delta) while (Math.abs(delta) < 100) delta = delta * 10;
-            return Math.round(delta);
+            return Math.round((float)delta);
         }
     };
 
     public static Comparator<Balance> BalanceBalanceDescComparator = new Comparator<Balance>() {
         public int compare(Balance balance1, Balance balance2) {
-            float fbalance1 = balance1.getFree()+balance1.getLocked();
-            float fbalance2 = balance2.getFree()+balance2.getLocked();
+            double fbalance1 = balance1.getFree()+balance1.getLocked();
+            double fbalance2 = balance2.getFree()+balance2.getLocked();
             //descending order
-            float delta = fbalance2-fbalance1;
+            double delta = fbalance2-fbalance1;
             if (0!=delta) while (Math.abs(delta) < 100) delta=delta*10;
-            return Math.round(delta);
+            return Math.round((float)delta);
         }
     };
 
     public static Comparator<Balance> BalanceValueAscComparator = new Comparator<Balance>() {
         public int compare(Balance balance1, Balance balance2) {
-            float value1 = balance1.value;
-            float value2 = balance2.value;
+            double value1 = balance1.value;
+            double value2 = balance2.value;
             //ascending order
-            float delta = value1-value2;
+            double delta = value1-value2;
             if (0!=delta) while (Math.abs(delta) < 100) delta=delta*10;
-            return Math.round(delta);
+            return Math.round((float)delta);
         }
     };
 
     public static Comparator<Balance> BalanceValueDescComparator = new Comparator<Balance>() {
         public int compare(Balance balance1, Balance balance2) {
-            float value1 = balance1.value;
-            float value2 = balance2.value;
+            double value1 = balance1.value;
+            double value2 = balance2.value;
             //descending order
-            float delta = value2-value1;
+            double delta = value2-value1;
             if (0!=delta) while (Math.abs(delta) < 100) delta=delta*10;
-            return Math.round(delta);
+            return Math.round((float)delta);
         }
     };
 

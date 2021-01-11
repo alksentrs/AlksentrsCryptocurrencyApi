@@ -45,10 +45,10 @@ public class TradeList implements Iterable<Trade>, Parcelable {
 
     public AverageBalance getMeanBalance() {
 
-        float value = 0;
-        float qty = 0;
-        float price;
-        float profit = 0;
+        double value = 0;
+        double qty = 0;
+        double price;
+        double profit = 0;
         long lastTime = 0;
         String asset = "";
 

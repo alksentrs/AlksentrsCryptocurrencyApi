@@ -11,12 +11,12 @@ import com.alksentrs.cryptocurrencyapi.util.Creator;
 public class AverageBalance implements Parcelable {
 
     private String asset;
-    private float qty;
-    private float price;
-    private float profit;
+    private double qty;
+    private double price;
+    private double profit;
     private long lastTime;
 
-    public AverageBalance(String asset, float qty, float price, float profit, long lastTime) {
+    public AverageBalance(String asset, double qty, double price, double profit, long lastTime) {
         this.asset = asset;
         this.qty = qty;
         this.price = price;
@@ -32,15 +32,15 @@ public class AverageBalance implements Parcelable {
         return asset;
     }
 
-    public float getQty() {
+    public double getQty() {
         return qty;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public float getProfit() {
+    public double getProfit() {
         return profit;
     }
 
