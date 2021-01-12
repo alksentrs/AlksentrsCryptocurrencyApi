@@ -75,11 +75,10 @@ public class BitcoinTrade extends ApiConnection implements IExchangeConnection {
 
     private ObjectMapper objectMapper = new ObjectMapper();
     private JSONParser jsonParser = new JSONParser();
+    private SimpleDateFormat sdf;
 
     private String apiKey;
     private String secret;
-
-    private SimpleDateFormat sdf;
 
     private Map<String,String> assetUrlMap;
 

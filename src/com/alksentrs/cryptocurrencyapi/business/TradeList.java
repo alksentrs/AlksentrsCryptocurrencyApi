@@ -23,13 +23,6 @@ public class TradeList implements Iterable<Trade>, Parcelable {
         tradeList.add(trade);
     }
 
-    public String toString() {
-        String ret = "";
-        Iterator<Trade> it = this.iterator();
-        while (it.hasNext()) ret = ret+" : "+it.next().toString();
-        return ret;
-    }
-
     public int size() { return tradeList.size(); }
 
     public Trade get(int position) {
@@ -144,4 +137,8 @@ public class TradeList implements Iterable<Trade>, Parcelable {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return "{\"tradeList\" : " + (tradeList == null ? null : tradeList) + "}";
+    }
 }

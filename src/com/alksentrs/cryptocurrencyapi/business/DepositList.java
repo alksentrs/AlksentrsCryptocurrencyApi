@@ -57,8 +57,6 @@ public class DepositList implements Iterable<Deposit> {
 
     @Override
     public String toString() {
-        return "{" +
-                "depositList:" + depositList +
-                "}";
+        return "{\"depositList\" : " + (depositList == null ? null : depositList) + "}";
     }
 }

@@ -104,10 +104,9 @@ public class BalanceList implements Iterable<Balance>, Parcelable {
         return 0;
     }
 
+
     @Override
     public String toString() {
-        return "{" +
-                "balanceList:" + balanceList +
-                "}";
+        return "{\"size\" : " + size + ",\"balanceList\" : " + (balanceList == null ? null : balanceList) + "}";
     }
 }

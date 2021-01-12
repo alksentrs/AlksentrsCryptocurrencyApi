@@ -70,13 +70,6 @@ public class CoinList implements Iterable<Coin>, Parcelable {
         size++;
     }
 
-    public String toString() {
-        String ret = "";
-        Iterator<Coin> it = this.iterator();
-        while (it.hasNext()) ret = ret+" : "+it.next().toString();
-        return ret;
-    }
-
     @Override
     public Iterator<Coin> iterator() {
 
@@ -139,4 +132,8 @@ public class CoinList implements Iterable<Coin>, Parcelable {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return "{\"size\" : " + size + ",\"coinList\" : " + (coinList == null ? null : coinList) + "}";
+    }
 }
